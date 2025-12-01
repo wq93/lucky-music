@@ -49,5 +49,20 @@
 				"selectedIconPath": "static/tab-icons/my-active.png"
 			}
 		]
-	}
+	},
+	"subPackages": [
+	    {
+	      "root": "subpkg",
+	      "name": "sub-1",
+	      "pages": [
+	        {
+	          "path": "pages/search-blog/search-blog",
+	          "style": {
+	            "navigationBarTitleText": "慕课搜索",
+	            "enablePullDownRefresh": false
+	          }
+					}
+	      ]
+	    }
+	  ]
 }
