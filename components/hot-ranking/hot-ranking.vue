@@ -6,8 +6,25 @@
 </template>
 
 <script>
+	// 在组件的 <script> 标签内
+import ranking1 from '@/static/images/ranking-1.png';
+import ranking2 from '@/static/images/ranking-2.png';
+import ranking3 from '@/static/images/ranking-3.png';
+import rankingOther from '@/static/images/ranking-other.png';
+
 export default {
   name: 'hot-ranking',
+	data() {
+		return {
+			// 将所有图片路径存储在一个映射中
+			rankingImages: {
+				1: ranking1,
+				2: ranking2,
+				3: ranking3,
+				other: rankingOther
+			}
+		}
+	},
   props: {
     ranking: {
       type: Number,
@@ -19,11 +36,12 @@ export default {
    */
   computed: {
     getRankingBg() {
-      if (this.ranking <= 3) {
-        return require(`@/static/images/ranking-${this.ranking}.png`);
-      }
-      return require('@/static/images/ranking-other.png');
-    }
+			if (this.ranking <= 3) {
+				// 直接从 data/map 中获取已引入的图片变量
+				return this.rankingImages[this.ranking];
+			}
+			return this.rankingImages.other;
+		}
   }
 };
 </script>

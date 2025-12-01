@@ -1,5 +1,5 @@
 <template>
-  <view class="search-blog-container red">
+  <view class="search-blog-container">
     <!-- search模块 -->
     <view class="search-bar-box">
       <my-search
@@ -16,6 +16,7 @@
         @cancel="onSearchCancel"
       />
     </view>
+		<view >{{msg}}111</view>
     <!-- 热搜列表 -->
     <view class="search-hot-list-box card" v-if="showType === HOT_LIST">
       <!-- 列表 -->
@@ -38,7 +39,7 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex';
 import { getDefaultText } from '@/api/search';
 // 0: 热搜列表 - 默认
 const HOT_LIST = '0';
@@ -65,6 +66,11 @@ export default {
 			isShowClear: true
     };
   },
+	computed: {
+		// 2. 在 computed 中，通过 mapState 函数，注册 state 中的数据，导入之后的数据可直接使用（就像使用 data 中的数据一样）
+		// mapState(模块名, ['字段名','字段名','字段名'])
+		...mapState('search', ['msg'])
+	},
   created() {
     this.loadDefaultText();
   },

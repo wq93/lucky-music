@@ -1,35 +1,53 @@
-
-
 // #ifndef VUE3
 import Vue from 'vue'
 import App from './App'
+
+import Vuex from 'vuex'; 
+
+import store from './store'; 
+
+import {hotNumber} from './filters';
 
 Vue.config.productionTip = false
 
 App.mpType = 'app'
 
-// 导入过滤器
-import * as filters from './filters';
+// [FIX] 3. 注册 Vuex 插件，使其能够将 $store 注入到所有组件中
+// 这一步是让所有组件都能通过 this.$store 访问到 store 的关键。
+// 只需要调用一次。
+Vue.use(Vuex);
 
 // 注册过滤器
-Object.keys(filters).forEach((key) => {
-	console.log(key, 'key')
-  Vue.filter(key, filters[key]);
-});
+ Vue.filter('hotNumber', hotNumber);
 
 const app = new Vue({
-    ...App
+    ...App,
+    store, 
 })
+
 app.$mount()
 // #endif
 
+
+
 // #ifdef VUE3
-import { createSSRApp } from 'vue'
-import App from './App.vue'
+import { createSSRApp } from 'vue';
+import App from './App.vue';
+
+import store from './store';
+
+import {hotNumber} from './filters';
+
+
+// VUE3 模式的 createApp 函数
 export function createApp() {
-  const app = createSSRApp(App)
-  return {
-    app
-  }
+    const app = createSSRApp(App)
+    
+    app.use(store); 
+    
+    app.config.globalProperties.hotNumber = hotNumber;
+    return {
+        app
+    }
 }
 // #endif
