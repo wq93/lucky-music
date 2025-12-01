@@ -71,14 +71,16 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+		};
   },
   methods: {
     /**
      * 点击搜索按钮触发
      */
-    onSearch() {
-      this.$emit('search', this.value);
+    onSearch(res) {
+			const val = res.value; 
+			this.$emit('search', val);
     },
     /**
      * 输入框获取焦点触发

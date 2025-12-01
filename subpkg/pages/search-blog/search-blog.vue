@@ -16,7 +16,6 @@
         @cancel="onSearchCancel"
       />
     </view>
-		<view >{{msg}}111</view>
     <!-- 热搜列表 -->
     <view class="search-hot-list-box card" v-if="showType === HOT_LIST">
       <!-- 列表 -->
@@ -24,11 +23,7 @@
     </view>
     <!-- 搜索历史 -->
     <view class="search-history-box" v-else-if="showType === SEARCH_HISTORY">
-      <search-history 
-				:isShowClear="isShowClear"
-				@onItemClick="onSearchConfirm" 
-				:searchData="searchData"
-				/>
+      <search-history @onItemClick="onSearchConfirm" />
     </view>
     <!-- 搜索结果 -->
     <view class="search-result-box" v-else>
@@ -39,7 +34,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// 导入 mapMutations 函数
+import { mapMutations } from 'vuex';
+
 import { getDefaultText } from '@/api/search';
 // 0: 热搜列表 - 默认
 const HOT_LIST = '0';
@@ -48,6 +45,8 @@ const SEARCH_HISTORY = '1';
 // 2：搜索结果
 const SEARCH_RESULT = '2';
 export default {
+  // 3. 注册 mixins
+
   data() {
     return {
       HOT_LIST,
@@ -62,19 +61,14 @@ export default {
       // 默认的placeholderText
       defaultText: '默认的placeholderText',
       // 搜索历史数据
-      searchData: [],
-			isShowClear: true
+      searchData: []
     };
   },
-	computed: {
-		// 2. 在 computed 中，通过 mapState 函数，注册 state 中的数据，导入之后的数据可直接使用（就像使用 data 中的数据一样）
-		// mapState(模块名, ['字段名','字段名','字段名'])
-		...mapState('search', ['msg'])
-	},
   created() {
     this.loadDefaultText();
   },
   methods: {
+    ...mapMutations('search', ['addSearchData']),
     /**
      * 获取推荐搜索文本
      */
@@ -86,20 +80,15 @@ export default {
      * 搜索内容
      */
     onSearchConfirm(val) {
-			
       // 用户未输入文本，直接搜索时，使用【推荐搜索文本】
       this.searchVal = val ? val : this.defaultText;
       // 保存搜索历史数据
-      this.addSearchData(val || this.defaultText);
+      this.addSearchData(this.searchVal);
       // 切换视图
       if (this.searchVal) {
         this.showType = SEARCH_RESULT;
       }
     },
-		addSearchData(val) {
-			console.log(val, 'val')
-			this.searchData.unshift(val);
-		},
     /**
      * @deprecated
      * 保存搜索历史数据
