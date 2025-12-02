@@ -61,6 +61,12 @@
 	            "navigationBarTitleText": "慕课搜索",
 	            "enablePullDownRefresh": false
 	          }
+					},
+					{
+						"path": "pages/blog-detail/blog-detail",
+						"style": {
+							"navigationBarTitleText": "文章详情"
+						}
 					}
 	      ]
 	    }
