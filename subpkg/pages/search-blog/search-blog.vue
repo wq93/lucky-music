@@ -36,6 +36,7 @@
 <script>
 // 2. 引入mescroll-comp.js
 import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
+
 // 导入 mapMutations 函数
 import { mapMutations } from 'vuex';
 

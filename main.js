@@ -38,7 +38,10 @@ import App from './App.vue';
 import store from './store';
 
 import {hotNumber, relativeTime} from './filters';
-
+// 通用样式
+// import './styles/global.scss';
+// 文章详情样式
+// import './styles/article-detail.scss';
 
 // VUE3 模式的 createApp 函数
 export function createApp() {

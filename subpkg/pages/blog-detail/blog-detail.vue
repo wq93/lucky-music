@@ -223,10 +223,11 @@ export default {
 </script>
 
 <style lang="scss">
-// @import '~@/styles/article-detail.scss';
+// @import '@/styles/article-detail.scss';
 .detail-container {
   padding: $uni-spacing-col-base $uni-spacing-row-base;
   padding-bottom: 108px;
+	font-size: $uni-font-size-title;
   .title {
     font-size: $uni-font-size-title;
     color: $uni-text-color-title;
