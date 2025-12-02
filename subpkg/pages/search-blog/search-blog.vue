@@ -34,6 +34,8 @@
 </template>
 
 <script>
+// 2. 引入mescroll-comp.js
+import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
 // 导入 mapMutations 函数
 import { mapMutations } from 'vuex';
 
@@ -46,7 +48,7 @@ const SEARCH_HISTORY = '1';
 const SEARCH_RESULT = '2';
 export default {
   // 3. 注册 mixins
-
+  mixins: [MescrollCompMixin],
   data() {
     return {
       HOT_LIST,

@@ -6,7 +6,7 @@ import Vuex from 'vuex';
 
 import store from './store'; 
 
-import {hotNumber} from './filters';
+import {hotNumber, relativeTime} from './filters';
 
 Vue.config.productionTip = false
 
@@ -19,6 +19,7 @@ Vue.use(Vuex);
 
 // 注册过滤器
  Vue.filter('hotNumber', hotNumber);
+ Vue.filter('relativeTime', relativeTime);
 
 const app = new Vue({
     ...App,
@@ -36,7 +37,7 @@ import App from './App.vue';
 
 import store from './store';
 
-import {hotNumber} from './filters';
+import {hotNumber, relativeTime} from './filters';
 
 
 // VUE3 模式的 createApp 函数
@@ -46,6 +47,7 @@ export function createApp() {
     app.use(store); 
     
     app.config.globalProperties.hotNumber = hotNumber;
+		app.config.globalProperties.relativeTime = relativeTime;
     return {
         app
     }
