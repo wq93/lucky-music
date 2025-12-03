@@ -43,6 +43,7 @@ export default {
       uni.getUserProfile({
         desc: '登录后可同步数据',
         success: async (obj) => {
+					console.log(obj, 'obj')
           // 调用 action ，请求登录接口
           await this.login(obj);
           // 登录成功之后，发送事件

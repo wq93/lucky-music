@@ -67,6 +67,18 @@
 						"style": {
 							"navigationBarTitleText": "文章详情"
 						}
+					},
+					{
+						"path": "pages/login-page/login-page",
+						"style": {
+							"navigationBarTitleText": "登录"
+						}
+					},
+					{
+						"path": "pages/video-detail/video-detail",
+						"style": {
+							"navigationBarTitleText": "视频"
+						}
 					}
 	      ]
 	    }
