@@ -23,7 +23,7 @@
 	
 	/* #ifndef APP-NVUE */
 	@import '@/static/customicons.css';
-
+	
 	// 设置整个项目的背景色
 	page {
 		background-color: #f5f5f5;
@@ -35,6 +35,16 @@
 		color: #333;
 		padding: 10px;
 	}
+	
+	/* #ifdef H5 */
+	.uni-scroll-view::-webkit-scrollbar {
+	  display: none;
+	}
+	
+	.uni-scroll-view {
+	  scrollbar-width: none;
+	}
+	/* #endif */
 	
 	
 	/**
